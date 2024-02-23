@@ -1,0 +1,13 @@
+/* variables.css */
+:root {
+  --background-page: #121212;
+  --text-color: #E0E0E0;
+  --card-background: white;
+  --card-hover-shadow: #FFD700;
+  --border-radius: 16px;
+  --font-family: 'Roboto', sans-serif;
+  --button-color: #FFD700;
+  --card-min-height: 350px;
+  --grid-gap: 20px;
+  --transition-speed: 0.3s;
+}
