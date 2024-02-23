@@ -68,6 +68,7 @@ Set Up Environment Variables:
 - Add your GeoDB Cities and OpenAI API keys:
 
 > REACT_APP_API_KEY=your_geo_db_api_key_here
+> 
 > REACT_APP_OPENAI_API_KEY=your_openai_api_key_here
 
 Run the Application:
