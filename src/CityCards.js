@@ -32,14 +32,13 @@ export default function CityCards() {
 
             for (const city of citiesData) {
                 setLoadingMessage(`Getting data from Geo Cities API for ${city.name}...`);
-                // Definición predeterminada de cityDataToCache con estructura básica y valores predeterminados
                 let cityDataToCache = {
                     ...city,
                     details: {
                         name: city.name,
                         country: 'Data not available',
                         population: 'N/A',
-                        image: cityImage // Asigna aquí la imagen predeterminada
+                        image: city.image 
                     }
                 };
 
