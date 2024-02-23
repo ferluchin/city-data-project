@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# City Data Summarization Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+  
 
-In the project directory, you can run:
+The City Data Summarization project aims to present summarized information about ten selected cities in the United States on a dedicated web page. It leverages publicly available databases along with an AI tool to generate concise summaries of each city, including details such as population, area, and top attractions
 
-### `npm start`
+## Objective
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To create a user-friendly web interface that displays essential information about each city, making it easy for users to learn about different locations in the United States.
 
-### `npm test`
+  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- A simple, responsive web page template for city data display.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Summarized data for 10 cities in the United States.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Use of GeoDB Cities API for fetching city data.
 
-### `npm run eject`
+- Integration of an AI tool (ChatGPT API) for data summarization.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Caching mechanism to improve API data fetching performance.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Prerequisites
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  
 
-## Learn More
+- Node.js and npm (Node Package Manager)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- React.js
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- A valid API key for GeoDB Cities API and OpenAI API
 
-### Code Splitting
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Setup and Installation
 
-### Analyzing the Bundle Size
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Clone the Repository:
 
-### Making a Progressive Web App
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+git clone https://github.com/yourrepository/city-data-summarization.git
 
-### Advanced Configuration
+cd city-data-summarization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  
 
-### Deployment
+Install Dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    npm install
 
-### `npm run build` fails to minify
+  
+Set Up Environment Variables:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Create a .env file in the root directory.
+
+- Add your GeoDB Cities and OpenAI API keys:
+
+> REACT_APP_API_KEY=your_geo_db_api_key_here
+> REACT_APP_OPENAI_API_KEY=your_openai_api_key_here
+
+Run the Application:
+
+    npm start
+
+The app will be available at http://localhost:3000.
+
+  
+
+### Usage
+Navigate through the web application to explore data about different cities.
+
+ - Click on the "Summarize with AI" button to view a summarized
+   description and top attractions for each city, using openAI API 
+ - Use the "Compare" button to compare data between cities.
