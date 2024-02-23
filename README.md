@@ -50,7 +50,7 @@ Clone the Repository:
 
   
 
-git clone https://github.com/yourrepository/city-data-summarization.git
+git clone https://github.com/ferluchin/city-data-project
 
 cd city-data-summarization
 
