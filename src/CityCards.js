@@ -23,63 +23,80 @@ function formatPopulation(population) {
 
 export default function CityCards() {
     const [cityDetails, setCityDetails] = useState([]);
+    const [loadingMessage, setLoadingMessage] = useState('');
 
     useEffect(() => {
         const fetchCityDetails = async () => {
-            const fetchedCities = await Promise.all(citiesData.map(async (city) => {
-                // Try to get the city details from localStorage
+            const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+            let fetchedCities = [...cityDetails];
+
+            for (const city of citiesData) {
+                setLoadingMessage(`Getting data from Geo Cities API for ${city.name}...`);
+                // Definición predeterminada de cityDataToCache con estructura básica y valores predeterminados
+                let cityDataToCache = {
+                    ...city,
+                    details: {
+                        name: city.name,
+                        country: 'Data not available',
+                        population: 'N/A',
+                        image: cityImage // Asigna aquí la imagen predeterminada
+                    }
+                };
+
                 const cachedData = localStorage.getItem(city.id);
                 if (cachedData) {
                     console.log(`Using cached data for: ${city.name}`);
-                    return JSON.parse(cachedData); // returns data from localStorage
-                }
+                    cityDataToCache = JSON.parse(cachedData);
+                } else {
+                    const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities/${city.id}`;
+                    const options = {
+                        method: 'GET',
+                        headers: {
+                            'X-RapidAPI-Key': API_KEY,
+                            'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com',
+                        },
+                    };
 
-                const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities/${city.id}`;
-                const options = {
-                    method: 'GET',
-                    headers: {
-                        'X-RapidAPI-Key': API_KEY,
-                        'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com',
-                    },
-                };
+                    try {
+                        const response = await fetch(url, options);
+                        if (!response.ok) {
+                            throw new Error(`API request failed with status ${response.status}`);
+                        }
+                        const data = await response.json();
+                        console.log(`Data received for ${city.name}:`, data);
 
-                try {
-                    console.log(`Fetching details for: ${city.name}`);
-                    const response = await fetch(url, options);
-                    if (!response.ok) {
-                        throw new Error(`API request failed with status ${response.status}`);
+                        cityDataToCache.details = data.data;
+                        localStorage.setItem(city.id, JSON.stringify(cityDataToCache));
+                    } catch (error) {
+                        console.error('Error fetching city details:', error);
                     }
-                    const data = await response.json();
-                    console.log(`Data received for ${city.name}:`, data);
-
-                    // Stores the received data in localStorage
-                    const cityDataToCache = { ...city, details: data.data };
-                    localStorage.setItem(city.id, JSON.stringify(cityDataToCache));
-
-                    return cityDataToCache;
-                } catch (error) {
-                    console.error('Error fetching city details:', error);
-                    return { ...city, details: { name: city.name, country: 'Data not available', population: 'N/A' } };
                 }
-            }));
+                fetchedCities.push(cityDataToCache);
+                setCityDetails(fetchedCities);
+                await delay(250); // delay aplied
+            }
 
-            setCityDetails(fetchedCities);
-            console.log('All city details fetched:', fetchedCities);
+            setLoadingMessage('');
+            // console.log('All city details fetched:', fetchedCities);
         };
 
         fetchCityDetails();
     }, []);
+    if (loadingMessage) {
+        return <div>{loadingMessage}</div>;
+    }
 
     return (
         <Grid container spacing={2} className="gridContainer">
             {cityDetails.map((city, index) => {
+                const cityImageSrc = city.details && city.image ? city.image : cityImage;
                 return (
                     <Grid item xs={12} sm={6} md={4} key={index}>
                         <Card className="darkCard">
                             <CardMedia
                                 component="img"
                                 height="140"
-                                image={city.image || cityImage}
+                                image={cityImageSrc}
                                 alt={city.name}
                             />
                             <CardContent className="cardContent">
