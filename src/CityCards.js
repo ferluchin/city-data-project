@@ -30,7 +30,7 @@ export default function CityCards() {
             let fetchedCities = [...cityDetails];
 
             for (const city of citiesData) {
-                let delayNeeded = false; // Indica si es necesario aplicar el delay
+                let delayNeeded = false; // checks if delay is needed
                 let cityDataToCache = {
                     ...city,
                     details: {
@@ -46,7 +46,7 @@ export default function CityCards() {
                     console.log(`Using cached data for: ${city.name}`);
                     cityDataToCache = JSON.parse(cachedData);
                 } else {
-                    delayNeeded = true; // Solo se necesita el delay si se va a hacer fetch de nuevos datos
+                    delayNeeded = true; // only if new data is gonna be fetched
                     setLoadingMessage(`Getting data from Geo Cities API for ${city.name}...`);
                     const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities/${city.id}`;
                     const options = {
@@ -92,8 +92,6 @@ export default function CityCards() {
             {cityDetails.map((city, index) => {
 
                 const cityImageSrc = city.details && city.image ? require(`./${city.image}`) : cityImage;
-                //const cityImageSrc = city.details && city.image ? city.image : cityImage;
-                //const cityImageSrc = city.details?.image ?? cityImage;
 
                 return (
                     <Grid item xs={12} sm={6} md={4} key={index}>
