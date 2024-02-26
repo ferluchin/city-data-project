@@ -27,11 +27,10 @@ export default function CityCards() {
 
     useEffect(() => {
         const fetchCityDetails = async () => {
-            const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
             let fetchedCities = [...cityDetails];
 
             for (const city of citiesData) {
-                setLoadingMessage(`Getting data from Geo Cities API for ${city.name}...`);
+                let delayNeeded = false; // Indica si es necesario aplicar el delay
                 let cityDataToCache = {
                     ...city,
                     details: {
@@ -47,6 +46,8 @@ export default function CityCards() {
                     console.log(`Using cached data for: ${city.name}`);
                     cityDataToCache = JSON.parse(cachedData);
                 } else {
+                    delayNeeded = true; // Solo se necesita el delay si se va a hacer fetch de nuevos datos
+                    setLoadingMessage(`Getting data from Geo Cities API for ${city.name}...`);
                     const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities/${city.id}`;
                     const options = {
                         method: 'GET',
@@ -71,16 +72,17 @@ export default function CityCards() {
                     }
                 }
                 fetchedCities.push(cityDataToCache);
-                setCityDetails(fetchedCities);
-                await delay(1000); // delay aplied
+                //setCityDetails(fetchedCities);
+                setCityDetails(prevCities => [...prevCities, cityDataToCache]);
+                if (delayNeeded) await new Promise(resolve => setTimeout(resolve, 500)); // Aplica el delay solo si es necesario
             }
 
             setLoadingMessage('');
-            // console.log('All city details fetched:', fetchedCities);
         };
 
         fetchCityDetails();
     }, []);
+
     if (loadingMessage) {
         return <div>{loadingMessage}</div>;
     }
@@ -88,7 +90,11 @@ export default function CityCards() {
     return (
         <Grid container spacing={2} className="gridContainer">
             {cityDetails.map((city, index) => {
-                const cityImageSrc = city.details && city.image ? city.image : cityImage;
+
+                const cityImageSrc = city.details && city.image ? require(`./${city.image}`) : cityImage;
+                //const cityImageSrc = city.details && city.image ? city.image : cityImage;
+                //const cityImageSrc = city.details?.image ?? cityImage;
+
                 return (
                     <Grid item xs={12} sm={6} md={4} key={index}>
                         <Card className="darkCard">
@@ -111,7 +117,6 @@ export default function CityCards() {
                                     Latitude: {city.details ? city.details.latitude : 'N/A'}<br />
                                     Longitude: {city.details ? city.details.longitude : 'N/A'}<br />
                                     Elevation Meters: {city.details ? city.details.elevationMeters : 'N/A'}<br />
-
                                 </Typography>
                             </CardContent>
                             <CardActions>

@@ -69,7 +69,8 @@ function CitySummaryPopup({ cityId }) {
     };
 
     const cityDetails = JSON.parse(localStorage.getItem(cityId));
-    const imageUrl = cityDetails.image;
+    // const imageUrl = cityDetails.image;
+    const imageUrl = require(`./${cityDetails.image}`);
 
 
     const openModal = () => {

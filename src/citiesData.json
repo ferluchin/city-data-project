@@ -4,69 +4,69 @@
     "name": "New York City",
     "country": "United States of America",
     "region": "New York",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg/2880px-View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg"
+    "image": "images/city.png"
   },
   {
     "id": "Q65",
     "name": "Los Angeles",
     "country": "United States of America",
     "region": "California",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/69/Los_Angeles_with_Mount_Baldy.jpg"
+    "image": "images/los_angeles.jpg"
   },
   {
     "id": "Q1297",
     "name": "Chicago",
     "country": "United States of America",
     "region": "Illinois",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/91/Chicago_Skyline_in_September_2023_%28cropped%29.jpg"
+    "image": "images/chicago.jpg"
   },
   {
     "id": "Q16552",
     "name": "San Diego",
     "country": "United States of America",
     "region": "California",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/11/San_Diego_skyline_18_%28cropped%29.jpg"
+    "image": "images/san_diego.jpg"
   },
   {
     "id": "Q16556",
     "name": "Phoenix",
     "country": "United States of America",
     "region": "Arizona",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f9/USA_09847_Grand_Canyon_Luca_Galuzzi_2007.jpg"
+    "image": "images/grand_canon.jpg"
   },
   {
     "id": "Q1345",
     "name": "Philadelphia",
     "country": "United States of America",
     "region": "Pennsylvania",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/72/Philadelphia_skyline_from_South_Street_Bridge_January_2020_%28rotate_2_degrees_perspective_correction_crop_4-1%29.jpg"
+    "image": "images/phila.jpg"
   },
   {
     "id": "Q975",
     "name": "San Antonio",
     "country": "United States of America",
     "region": "Texas",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Downtown_San_Antonio_view_from_The_Tower_of_the_Americas.jpg"
+    "image": "images/san_antonio.jpg"
   },
   {
     "id": "Q16552",
     "name": "San Diego",
     "country": "United States of America",
     "region": "California",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ea/La_Jolla_Shores_view_%28cropped%29.jpg"
+    "image": "images/san_diego.jpg"
   },
   {
     "id": "Q16557",
     "name": "Dallas",
     "country": "United States of America",
     "region": "Texas",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/11/View_of_Dallas_from_Reunion_Tower_August_2015_13.jpg"
+    "image": "images/dallas.jpg"
   },
   {
     "id": "Q16553",
     "name": "San Jose",
     "country": "United States of America",
     "region": "California",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/85/SJ_skyline_at_night_horizontal.jpg"
+    "image": "images/san_jose.jpg"
   }
 ]
