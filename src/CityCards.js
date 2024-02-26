@@ -72,7 +72,7 @@ export default function CityCards() {
                 }
                 fetchedCities.push(cityDataToCache);
                 setCityDetails(fetchedCities);
-                await delay(1000); // delay aplied
+                await delay(100); // delay aplied
             }
 
             setLoadingMessage('');
