@@ -1,22 +1,18 @@
 # City Data Summarization Project
 
-## Overview
+## Live Demo
 
-  
+Experience the City Data Summarization project directly in your browser without the need for setup. Visit the live application here: https://citydataapi.netlify.app/.
+
+## Overview
 
 The City Data Summarization project aims to present summarized information about ten selected cities in the United States on a dedicated web page. It leverages publicly available databases along with an AI tool to generate concise summaries of each city, including details such as population, area, and top attractions
 
 ## Objective
-
   
-
 To create a user-friendly web interface that displays essential information about each city, making it easy for users to learn about different locations in the United States.
 
-  
-
 ## Features
-
-  
 
 - A simple, responsive web page template for city data display.
 
@@ -28,11 +24,7 @@ To create a user-friendly web interface that displays essential information abou
 
 - Caching mechanism to improve API data fetching performance.
 
-  
-
 ## Prerequisites
-
-  
 
 - Node.js and npm (Node Package Manager)
 
@@ -40,28 +32,19 @@ To create a user-friendly web interface that displays essential information abou
 
 - A valid API key for GeoDB Cities API and OpenAI API
 
-  
-
-## Setup and Installation
-
-  
+## Setup and Installation  
 
 Clone the Repository:
-
-  
 
 git clone https://github.com/ferluchin/city-data-project
 
 cd city-data-summarization
 
-  
-
-Install Dependencies:
+## Install Dependencies:
 
     npm install
 
-  
-Set Up Environment Variables:
+## Set Up Environment Variables:
 
 - Create a .env file in the root directory.
 
@@ -77,11 +60,10 @@ Run the Application:
 
 The app will be available at http://localhost:3000.
 
-  
-
 ### Usage
+
 Navigate through the web application to explore data about different cities.
 
- - Click on the "Summarize with AI" button to view a summarized
-   description and top attractions for each city, using openAI API 
- - Use the "Compare" button to compare data between cities.
+- Click on the "Summarize with AI" button to view a summarized
+   description and top attractions for each city, using openAI API.
+- Use the "Compare" button to compare data between cities.
