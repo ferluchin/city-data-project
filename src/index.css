@@ -31,7 +31,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   min-height: var(--card-min-height);
-  max-width: 100px !important;
+  max-width: 100px;
 }
 
 .cardContent {

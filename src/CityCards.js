@@ -60,7 +60,7 @@ export default function CityCards() {
                     } catch (error) {
                         console.error('Error fetching city details:', error);
                     }
-                    await new Promise(resolve => setTimeout(resolve, 500)); // Aplica el delay solo si es necesario
+                    await new Promise(resolve => setTimeout(resolve, 500)); // delay only if needed
                 }
             }
             setLoadingMessage('');
