@@ -26,27 +26,13 @@ export default function CityCards() {
     const [loadingMessage, setLoadingMessage] = useState('');
 
     useEffect(() => {
-        const fetchCityDetails = async () => {
-            let fetchedCities = [...cityDetails];
-
+        (async () => {
             for (const city of citiesData) {
-                let delayNeeded = false; // checks if delay is needed
-                let cityDataToCache = {
-                    ...city,
-                    details: {
-                        name: city.name,
-                        country: 'Data not available',
-                        population: 'N/A',
-                        image: city.image 
-                    }
-                };
-
                 const cachedData = localStorage.getItem(city.id);
                 if (cachedData) {
                     console.log(`Using cached data for: ${city.name}`);
-                    cityDataToCache = JSON.parse(cachedData);
+                    setCityDetails(prevCities => [...prevCities, JSON.parse(cachedData)]);
                 } else {
-                    delayNeeded = true; // only if new data is gonna be fetched
                     setLoadingMessage(`Getting data from Geo Cities API for ${city.name}...`);
                     const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities/${city.id}`;
                     const options = {
@@ -65,22 +51,20 @@ export default function CityCards() {
                         const data = await response.json();
                         console.log(`Data received for ${city.name}:`, data);
 
-                        cityDataToCache.details = data.data;
+                        const cityDataToCache = {
+                            ...city,
+                            details: data.data,
+                        };
                         localStorage.setItem(city.id, JSON.stringify(cityDataToCache));
+                        setCityDetails(prevCities => [...prevCities, cityDataToCache]);
                     } catch (error) {
                         console.error('Error fetching city details:', error);
                     }
+                    await new Promise(resolve => setTimeout(resolve, 500)); // Aplica el delay solo si es necesario
                 }
-                fetchedCities.push(cityDataToCache);
-                //setCityDetails(fetchedCities);
-                setCityDetails(prevCities => [...prevCities, cityDataToCache]);
-                if (delayNeeded) await new Promise(resolve => setTimeout(resolve, 500)); // Aplica el delay solo si es necesario
             }
-
             setLoadingMessage('');
-        };
-
-        fetchCityDetails();
+        })();
     }, []);
 
     if (loadingMessage) {
